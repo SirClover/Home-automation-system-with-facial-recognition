@@ -1,0 +1,118 @@
+int pinOut1 = 2, pinOut2 = 3, pinOut3 = 4, pinOut4 = 5, pinOut5 = 6, pinOut6 = 7, pinOut7 = 8, pinOut8 = 9, pinOut9 = 10, pinOut10 = 11, pinOut11 = 12;
+int portInformation;
+
+void setup() {
+  // put your setup code here, to run once:
+
+  //Out initialization
+  pinMode(pinOut1, OUTPUT);
+  pinMode(pinOut2, OUTPUT);
+  pinMode(pinOut3, OUTPUT);
+  pinMode(pinOut4, OUTPUT);
+  pinMode(pinOut5, OUTPUT);
+  pinMode(pinOut6, OUTPUT);
+  pinMode(pinOut7, OUTPUT);
+  pinMode(pinOut8, OUTPUT);
+  pinMode(pinOut9, OUTPUT);
+  pinMode(pinOut10, OUTPUT);
+  pinMode(pinOut11, OUTPUT);
+
+  //Start ports
+  shutdown_all();
+
+  //Serial initialization
+  Serial.begin(9600);
+
+  //Testing all
+  turn_on_all();
+  delay(1000);
+  shutdown_all();
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  // Check serial port state
+  if (Serial.available())
+  {
+    portInformation = Serial.read();
+
+    switch (portInformation)
+    {
+      case 1: digitalWrite(pinOut1, HIGH);
+      break;
+      case 2: digitalWrite(pinOut1, LOW);
+      break;
+      case 3: digitalWrite(pinOut2, HIGH);
+      break;
+      case 4: digitalWrite(pinOut2, LOW);
+      break;
+      case 5: digitalWrite(pinOut3, HIGH);
+      break;
+      case 6: digitalWrite(pinOut3, LOW);
+      break;
+      case 7: digitalWrite(pinOut4, HIGH);
+      break;
+      case 8: digitalWrite(pinOut4, LOW);
+      break;
+      case 9: digitalWrite(pinOut5, HIGH);
+      break;
+      case 10: digitalWrite(pinOut5, LOW);
+      break;
+      case 11: digitalWrite(pinOut6, HIGH);
+      break;
+      case 12: digitalWrite(pinOut6, LOW);
+      break;
+      case 13: digitalWrite(pinOut7, HIGH);
+      break;
+      case 14: digitalWrite(pinOut7, LOW);
+      break;
+      case 15: digitalWrite(pinOut8, HIGH);
+      break;
+      case 16: digitalWrite(pinOut8, LOW);
+      break;
+      case 17: digitalWrite(pinOut9, HIGH);
+      break;
+      case 18: digitalWrite(pinOut9, LOW);
+      break;
+      case 19: digitalWrite(pinOut10, HIGH);
+      break;
+      case 20: digitalWrite(pinOut10, LOW);
+      break;
+      case 21: digitalWrite(pinOut11, HIGH);
+      break;
+      case 22: digitalWrite(pinOut11, LOW);
+      break;
+    }
+  }
+
+}
+
+void shutdown_all ()
+{
+  digitalWrite(pinOut1, LOW);
+  digitalWrite(pinOut2, LOW);
+  digitalWrite(pinOut3, LOW);
+  digitalWrite(pinOut4, LOW);
+  digitalWrite(pinOut5, LOW);
+  digitalWrite(pinOut6, LOW);
+  digitalWrite(pinOut7, LOW);
+  digitalWrite(pinOut8, LOW);
+  digitalWrite(pinOut9, LOW);
+  digitalWrite(pinOut10, LOW);
+  digitalWrite(pinOut11, LOW);
+}
+
+void turn_on_all ()
+{
+  digitalWrite(pinOut1, HIGH);
+  digitalWrite(pinOut2, HIGH);
+  digitalWrite(pinOut3, HIGH);
+  digitalWrite(pinOut4, HIGH);
+  digitalWrite(pinOut5, HIGH);
+  digitalWrite(pinOut6, HIGH);
+  digitalWrite(pinOut7, HIGH);
+  digitalWrite(pinOut8, HIGH);
+  digitalWrite(pinOut9, HIGH);
+  digitalWrite(pinOut10, HIGH);
+  digitalWrite(pinOut11, HIGH);
+}
