@@ -1,10 +1,28 @@
 int pinOut1 = 2, pinOut2 = 3, pinOut3 = 4, pinOut4 = 5, pinOut5 = 6, pinOut6 = 7, pinOut7 = 8, pinOut8 = 9, pinOut9 = 10, pinOut10 = 11, pinOut11 = 12;
-int portInformation;
+char portInformation;
 
 void setup() {
   // put your setup code here, to run once:
 
   //Out initialization
+  initialize();
+
+  //Start ports
+  shutdown_all();
+
+  //Serial initialization
+  Serial.begin(9600);
+
+  //Testing all
+  test();
+}
+
+void loop() {
+  check();
+}
+
+void initialize ()
+{
   pinMode(pinOut1, OUTPUT);
   pinMode(pinOut2, OUTPUT);
   pinMode(pinOut3, OUTPUT);
@@ -16,75 +34,71 @@ void setup() {
   pinMode(pinOut9, OUTPUT);
   pinMode(pinOut10, OUTPUT);
   pinMode(pinOut11, OUTPUT);
+}
 
-  //Start ports
-  shutdown_all();
-
-  //Serial initialization
-  Serial.begin(9600);
-
-  //Testing all
+void test ()
+{
   turn_on_all();
   delay(1000);
   shutdown_all();
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+void check ()
+{
   // Check serial port state
-  if (Serial.available())
+  if (Serial.available() == 1)
   {
     portInformation = Serial.read();
+    Serial.print(portInformation);
 
     switch (portInformation)
     {
-      case 1: digitalWrite(pinOut1, HIGH);
+      case 'A': digitalWrite(pinOut1, HIGH);
       break;
-      case 2: digitalWrite(pinOut1, LOW);
+      case 'B': digitalWrite(pinOut1, LOW);
       break;
-      case 3: digitalWrite(pinOut2, HIGH);
+      case 'C': digitalWrite(pinOut2, HIGH);
       break;
-      case 4: digitalWrite(pinOut2, LOW);
+      case 'D': digitalWrite(pinOut2, LOW);
       break;
-      case 5: digitalWrite(pinOut3, HIGH);
+      case 'E': digitalWrite(pinOut3, HIGH);
       break;
-      case 6: digitalWrite(pinOut3, LOW);
+      case 'F': digitalWrite(pinOut3, LOW);
       break;
-      case 7: digitalWrite(pinOut4, HIGH);
+      case 'G': digitalWrite(pinOut4, HIGH);
       break;
-      case 8: digitalWrite(pinOut4, LOW);
+      case 'H': digitalWrite(pinOut4, LOW);
       break;
-      case 9: digitalWrite(pinOut5, HIGH);
+      case 'I': digitalWrite(pinOut5, HIGH);
       break;
-      case 10: digitalWrite(pinOut5, LOW);
+      case 'J': digitalWrite(pinOut5, LOW);
       break;
-      case 11: digitalWrite(pinOut6, HIGH);
+      case 'K': digitalWrite(pinOut6, HIGH);
       break;
-      case 12: digitalWrite(pinOut6, LOW);
+      case 'L': digitalWrite(pinOut6, LOW);
       break;
-      case 13: digitalWrite(pinOut7, HIGH);
+      case 'M': digitalWrite(pinOut7, HIGH);
       break;
-      case 14: digitalWrite(pinOut7, LOW);
+      case 'N': digitalWrite(pinOut7, LOW);
       break;
-      case 15: digitalWrite(pinOut8, HIGH);
+      case 'O': digitalWrite(pinOut8, HIGH);
       break;
-      case 16: digitalWrite(pinOut8, LOW);
+      case 'P': digitalWrite(pinOut8, LOW);
       break;
-      case 17: digitalWrite(pinOut9, HIGH);
+      case 'Q': digitalWrite(pinOut9, HIGH);
       break;
-      case 18: digitalWrite(pinOut9, LOW);
+      case 'R': digitalWrite(pinOut9, LOW);
       break;
-      case 19: digitalWrite(pinOut10, HIGH);
+      case 'S': digitalWrite(pinOut10, HIGH);
       break;
-      case 20: digitalWrite(pinOut10, LOW);
+      case 'T': digitalWrite(pinOut10, LOW);
       break;
-      case 21: digitalWrite(pinOut11, HIGH);
+      case 'U': digitalWrite(pinOut11, HIGH);
       break;
-      case 22: digitalWrite(pinOut11, LOW);
+      case 'V': digitalWrite(pinOut11, LOW);
       break;
     }
   }
-
 }
 
 void shutdown_all ()
